@@ -1,0 +1,20 @@
+[Unit]
+Description=Portal (Oleg Borisovsky)
+After=network.target ollama.service
+Wants=ollama.service
+
+[Service]
+User=@APP_USER@
+WorkingDirectory=@APP_DIR@
+EnvironmentFile=/etc/portal.env
+ExecStart=@NODE_BIN@ @APP_DIR@/server.js
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=@APP_DIR@/data @APP_DIR@/media
+PrivateTmp=true
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
