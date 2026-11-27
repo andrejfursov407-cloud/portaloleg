@@ -1,0 +1,1 @@
+{"name":"oleg-ai","version":"2.2.0","type":"module","private":true,"scripts":{"start":"node server.js","build-update":"node tools/build-update.mjs"},"engines":{"node":">=22.13"}}

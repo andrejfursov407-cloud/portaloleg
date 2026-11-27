@@ -1,0 +1,106 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#2a0f3a"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" href="/avatar.png"><title>Олег AI</title>
+<style>
+:root{--pk:#ff5fae;--cy:#35e6d4;--gd:#f2b24a;--bg:rgba(32,10,44,.84);--ln:#35e6d4}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{font:19px/1.3 "Arial Narrow",Oswald,"Roboto Condensed",Arial,sans-serif;font-stretch:condensed;color:#fff;height:100dvh;display:flex;flex-direction:column;overflow:hidden;
+padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+background:radial-gradient(circle at 50% 66%,#ffc16a 0,#ff6f86 20%,transparent 46%),linear-gradient(#4a2380,#c8438f 42%,#ff8a5c 78%,#2a1040)}
+body:before{content:"";position:fixed;inset:auto 0 0 0;height:38%;z-index:-1;background:linear-gradient(90deg,#3a1456 0 8%,#4a1a66 8% 14%,#32104a 14% 22%,#5a2078 22% 27%,#3a1456 27% 40%,#4c1c6c 40% 46%,#32104a 46% 60%,#5a2078 60% 66%,#3a1456 66% 80%,#4a1a66 80% 88%,#32104a 88%);clip-path:polygon(0 100%,0 40%,8% 40%,8% 22%,14% 22%,14% 50%,22% 50%,22% 12%,27% 12%,27% 45%,40% 45%,40% 30%,46% 30%,46% 55%,60% 55%,60% 18%,66% 18%,66% 48%,80% 48%,80% 28%,88% 28%,88% 52%,100% 52%,100% 100%);opacity:.8}
+header{display:flex;align-items:center;gap:14px;padding:10px 16px}
+#av{width:clamp(48px,9vw,96px);aspect-ratio:1;border-radius:50%;border:3px solid var(--pk);box-shadow:0 0 18px var(--pk);object-fit:cover;background:#4a2380}
+h1{margin:0;font:clamp(30px,7vw,64px)/1 Impact,"Arial Black",sans-serif;letter-spacing:.02em;background:linear-gradient(#ff5fae,#ffb35a 60%,#ff5fae);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:2px #2a0f3a;paint-order:stroke fill;filter:drop-shadow(0 0 10px #7a2cff)}
+.tag{color:var(--gd);font-weight:700;font-size:clamp(12px,2.4vw,22px);text-shadow:0 2px 0 #2a0f3a}
+.sp{flex:1}.ib{width:44px;height:44px;border-radius:50%;border:2px solid var(--ln);background:var(--bg);color:#fff;font-size:20px;cursor:pointer}
+main{flex:1;min-height:0;display:flex;gap:14px;padding:6px 16px 10px}
+.panel{background:var(--bg);border:2px solid var(--ln);border-radius:18px;box-shadow:0 0 14px #35e6d455,inset 0 0 14px #35e6d422}
+#log{flex:1;overflow:auto;padding:14px 18px;display:flex;flex-direction:column;gap:14px;-webkit-overflow-scrolling:touch}
+.m{display:flex;gap:12px;align-items:flex-start}.m img{width:44px;height:44px;border-radius:50%;border:2px solid var(--pk);flex:none}
+.m b{color:var(--pk)}.m.u b{color:#5ab4ff}.m div{min-width:0;overflow-wrap:anywhere;white-space:pre-wrap}.m.st div{opacity:.7;font-style:italic}.m.er div{color:#ff8a8a}
+.m code{background:#0006;padding:1px 5px;border-radius:5px;font-family:ui-monospace,Menlo,monospace;font-size:.85em}.m pre{background:#0008;padding:10px;border-radius:10px;overflow:auto;margin:6px 0;white-space:pre}
+aside{width:270px;padding:14px 18px;align-self:flex-start}aside h2{margin:0 0 8px;font-size:26px;border-bottom:1px solid #fff3;padding-bottom:6px}
+aside p{margin:6px 0;display:flex;justify-content:space-between;gap:8px;font-size:17px}aside p span{color:#6dff8a;font-weight:700;text-align:right;overflow-wrap:anywhere}aside p span.off{color:#ff8a8a}
+form#f{display:flex;gap:10px;padding:10px 16px 12px;background:linear-gradient(#0000,#1a0830cc)}
+#in{flex:1;min-width:0;background:#150a22e6;border:2px solid var(--ln);border-radius:14px;color:#fff;font:inherit;padding:10px 14px;resize:none;max-height:140px}
+#go{border:0;border-radius:30px;padding:0 24px;font:700 20px Impact,sans-serif;color:#fff;cursor:pointer;background:linear-gradient(90deg,#c53df0,#ff5fae);box-shadow:0 0 14px #ff5fae88}
+.ov{position:fixed;inset:0;background:#0a0014b3;display:none;align-items:center;justify-content:center;padding:12px;z-index:9}.ov.on{display:flex}
+.box{width:100%;max-width:560px;max-height:92dvh;overflow:auto;padding:18px}.box h3{margin:0 0 10px;font-size:26px;color:var(--gd)}
+input,select,textarea,button{font:inherit}.box input,.box select,.box textarea{width:100%;background:#150a22;border:2px solid #35e6d466;border-radius:10px;color:#fff;padding:9px 12px;margin:4px 0 8px}
+.bt{background:linear-gradient(90deg,#c53df0,#ff5fae);border:0;color:#fff;border-radius:10px;padding:9px 16px;cursor:pointer;margin:2px 4px 2px 0}.bt.g{background:#ffffff22;border:1px solid #fff4}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #fff2}
+.chip{display:inline-block;background:#ffffff1f;border-radius:20px;padding:3px 11px;margin:3px 3px 0 0;cursor:pointer;font-size:16px}small,.hint{color:#cbb;font-size:15px}.err{color:#ff8a8a;min-height:1.2em}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gd);outline-offset:2px}
+@media(max-width:800px){body{font-size:17px}main{flex-direction:column-reverse;padding:4px 10px 6px;gap:8px}aside{width:100%;padding:8px 12px;display:flex;flex-wrap:wrap;gap:2px 16px;align-self:stretch}aside h2{display:none}aside p{font-size:14px;margin:2px 0}header{padding:8px 10px}form#f{padding:8px 10px}#go{padding:0 16px}.tag{display:none}}
+@media(prefers-reduced-motion:no-preference){.m.st div{animation:p 1.2s infinite}@keyframes p{50%{opacity:.35}}}
+</style></head><body>
+<header><img id="av" src="/avatar.png" alt="Олег" onerror="this.style.display='none'"><div><h1>OLEG AI</h1><div class="tag">АНАЛИЗ. ПЛАНИРОВАНИЕ. РЕШЕНИЕ.</div></div><div class="sp"></div>
+<button class="ib" id="bv" title="Озвучка ответов">🔇</button><button class="ib" id="bm" title="Чаты">☰</button><button class="ib" id="ba" title="Админ-панель" hidden>⚙</button></header>
+<main><section class="panel" id="log" aria-live="polite"></section>
+<aside class="panel"><h2>Системный статус</h2><p>РЕЖИМ: <span id="s1">—</span></p><p>ПОИСК: <span id="s2">—</span></p><p>СЕРВЕР: <span id="s3">—</span></p><p>МОДЕЛЬ: <span id="s4">—</span></p></aside></main>
+<form id="f"><button type="button" class="ib" id="mic" title="Голосовой ввод">🎤</button><textarea id="in" rows="1" placeholder="Напиши задачу…" enterkeyhint="send"></textarea><button id="go">ОТПРАВИТЬ</button></form>
+
+<div class="ov on" id="auth"><div class="box panel"><h3>Олег AI — вход</h3><input id="an" placeholder="Логин" autocomplete="username" autocapitalize="none"><input id="ap" type="password" placeholder="Пароль (от 8 символов)" autocomplete="current-password"><div class="err" id="ae"></div>
+<button class="bt" id="li">Войти</button><button class="bt g" id="re">Регистрация</button><p class="hint">Первый зарегистрированный пользователь становится администратором.</p></div></div>
+<div class="ov" id="menu"><div class="box panel"><h3>Чаты</h3><button class="bt" id="nc">+ Новый чат</button><button class="bt g" id="lo">Выйти</button><div id="cl"></div><button class="bt g" onclick="$('menu').classList.remove('on')">Закрыть</button></div></div>
+<div class="ov" id="adm"><div class="box panel"><h3>Админ-панель</h3><div class="tabs" id="tb"></div><div id="ac"></div><button class="bt g" onclick="$('adm').classList.remove('on')">Закрыть</button></div></div>
+<script>
+const $=i=>document.getElementById(i),E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let me,cid=null,speak=localStorage.sp==='1',busy=false,AD=null;
+async function api(p,b,raw){const o={headers:{'X-Req':'1'}};if(b!==undefined){o.method='POST';if(raw){o.body=b}else{o.body=JSON.stringify(b);o.headers['Content-Type']='application/json'}}
+ const r=await fetch('/api/'+p,o);if(r.status===401&&p!=='login'&&p!=='register'){$('auth').classList.add('on');throw new Error('Нужен вход')}
+ if(!r.ok)throw new Error((await r.json().catch(()=>({}))).error||'Ошибка '+r.status);return r}
+const J=async(p,b)=>(await api(p,b)).json();
+function md(t){return E(t).replace(/```(?:\w*\n)?([\s\S]*?)```/g,'<pre>$1</pre>').replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n]+)\*\*/g,'<b style="color:#fff">$1</b>')}
+function add(role,t,cls=''){const d=document.createElement('div');d.className='m '+(role==='user'?'u ':'')+cls;
+ d.innerHTML=(role==='user'?'':'<img src="/avatar.png" alt="" onerror="this.style.display=\'none\'">')+'<div><b>'+(role==='user'?'ЗАДАЧА:':'ОЛЕГ:')+'</b> <span></span></div>';
+ d.querySelector('span').innerHTML=role==='user'?E(t):md(t);$('log').append(d);$('log').scrollTop=1e9;return d}
+async function boot(){try{me=await J('me');$('auth').classList.remove('on');$('ba').hidden=me.role!=='admin';$('bv').textContent=speak?'🔊':'🔇';status();newChat()}catch{}}
+async function status(){try{const s=await J('status');$('s1').textContent=s.ollama?'ДИАГНОСТИКА':'ОФЛАЙН';$('s2').textContent=s.search?'АКТИВЕН':'ВЫКЛ';$('s2').className=s.search?'':'off';$('s3').textContent=s.ollama?'НА СВЯЗИ':'НЕТ СВЯЗИ';$('s3').className=s.ollama?'':'off';$('s4').textContent=s.model||'не выбрана';$('s4').className=s.model?'':'off'}catch{}}
+function newChat(){cid=null;$('log').innerHTML='';add('assistant','Здорово, '+E(me.name)+'! Чего стряслось-то? Опиши задачу — разберёмся.');$('menu').classList.remove('on')}
+async function auth(kind){try{await J(kind,{name:$('an').value.trim(),password:$('ap').value});$('ap').value='';boot()}catch(e){$('ae').textContent=e.message}}
+$('li').onclick=()=>auth('login');$('re').onclick=()=>auth('register');$('ap').onkeydown=e=>{if(e.key==='Enter')auth('login')};
+$('lo').onclick=async()=>{await api('logout',{});location.reload()};$('nc').onclick=newChat;
+$('bm').onclick=async()=>{const l=await J('chats');$('cl').innerHTML=l.map(c=>`<div class="row"><a href="#" data-i="${c.id}" style="color:#fff;flex:1">${E(c.title)}</a><button class="bt g" data-d="${c.id}">✕</button></div>`).join('')||'<p class="hint">Пока пусто</p>';$('menu').classList.add('on')};
+$('cl').onclick=async e=>{const i=e.target.dataset.i,d=e.target.dataset.d;e.preventDefault();
+ if(d){await api('chats/'+d+'/delete',{});if(+d===cid)newChat();return $('bm').onclick()}
+ if(i){cid=+i;$('log').innerHTML='';(await J('chats/'+i)).forEach(m=>add(m.role,m.content));$('menu').classList.remove('on')}};
+$('bv').onclick=()=>{speak=!speak;localStorage.sp=speak?1:0;$('bv').textContent=speak?'🔊':'🔇'};
+async function say(t){try{const r=await api('tts',{text:t.replace(/[`*#]/g,'')});const a=new Audio(URL.createObjectURL(await r.blob()));a.play()}catch{if('speechSynthesis' in window){const u=new SpeechSynthesisUtterance(t);u.lang='ru-RU';speechSynthesis.speak(u)}}}
+$('f').onsubmit=async e=>{e.preventDefault();const t=$('in').value.trim();if(!t||busy)return;busy=true;$('in').value='';$('in').style.height='auto';add('user',t);
+ let st=add('assistant','(Думает…)','st');
+ try{const r=await api('chat',{chat:cid,message:t});const rd=r.body.getReader(),dc=new TextDecoder();let buf='';
+  for(;;){const {done,value}=await rd.read();if(done)break;buf+=dc.decode(value,{stream:true});const p=buf.split('\n\n');buf=p.pop();
+   for(const l of p){const o=JSON.parse(l.slice(6));if(o.t==='chat')cid=o.id;else if(o.t==='status')st.querySelector('span').textContent='('+o.v+')';
+    else if(o.t==='text'){st.remove();add('assistant',o.v);st=null;if(speak)say(o.v)}else if(o.t==='error'){st?.remove();st=null;add('assistant',o.v,'er')}}}}
+ catch(x){st?.remove();add('assistant',x.message,'er')}busy=false;st&&st.remove()};
+$('in').oninput=()=>{$('in').style.height='auto';$('in').style.height=$('in').scrollHeight+'px'};
+$('in').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&matchMedia('(hover:hover)').matches){e.preventDefault();$('f').requestSubmit()}};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)$('mic').hidden=true;else{let rc;$('mic').onclick=()=>{if(rc){rc.stop();return}rc=new SR();rc.lang='ru-RU';rc.interimResults=true;$('mic').textContent='⏹';
+ rc.onresult=e=>{$('in').value=[...e.results].map(r=>r[0].transcript).join('')};rc.onend=()=>{rc=null;$('mic').textContent='🎤'};rc.start()}}
+// ---------- админка ----------
+const TABS={models:'Модели',voice:'Голос',set:'Настройки',users:'Пользователи',upd:'Обновление'},REC=['qwen2.5:1.5b','qwen2.5:3b','llama3.2:3b','qwen3:4b','gemma2:2b','phi3.5'];
+$('ba').onclick=async()=>{$('adm').classList.add('on');$('tb').innerHTML=Object.entries(TABS).map(([k,v])=>`<button class="bt g" data-t="${k}">${v}</button>`).join('');tab('models')};
+$('tb').onclick=e=>e.target.dataset.t&&tab(e.target.dataset.t);
+const sv=async o=>{await J('admin/settings',o);status()};
+async function tab(t){AD=await J('admin/info');const s=AD.settings,c=$('ac');
+ if(t==='models')c.innerHTML=`<p class="hint">Модели работают через Ollama. Активная выбирается кнопкой.</p>`+(AD.models.map(m=>`<div class="row"><span>${E(m.name)} <small>${(m.size/1e9).toFixed(1)} ГБ</small></span><span><button class="bt ${s.model===m.name?'':'g'}" data-sel="${E(m.name)}">${s.model===m.name?'✓ Активна':'Выбрать'}</button><button class="bt g" data-del="${E(m.name)}">✕</button></span></div>`).join('')||'<p class="hint">Моделей нет — установи ниже.</p>')+
+ `<h3 style="margin-top:14px;font-size:20px">Установить</h3><input id="mn" placeholder="например qwen2.5:3b"><div>${REC.map(r=>`<span class="chip" data-r="${r}">${r}</span>`).join('')}</div><button class="bt" id="pl">Установить</button><pre id="pg" class="hint" style="white-space:pre-wrap"></pre>`;
+ if(t==='voice')c.innerHTML=`<p class="hint">Озвучка через Piper. Свой голос — файлы <b>.onnx</b> и <b>.onnx.json</b> (модель Piper).</p><label>Активный голос</label><select id="vs"><option value="">Системный голос браузера</option>${AD.voices.map(v=>`<option ${s.voice===v?'selected':''}>${E(v)}</option>`).join('')}</select>
+ <button class="bt" id="vt">Проверить</button>${AD.voices.length?'<button class="bt g" id="vd">Удалить выбранный</button>':''}<h3 style="margin-top:14px;font-size:20px">Добавить свой голос</h3><input id="vn" placeholder="имя (латиницей), напр. oleg"><input id="vf" type="file" multiple accept=".onnx,.json"><button class="bt" id="vu">Загрузить</button><div class="hint" id="vm"></div>`;
+ if(t==='set')c.innerHTML=`<label>Адрес Ollama</label><input id="o1" value="${E(s.ollama)}"><label>Системный промпт (характер Олега)</label><textarea id="o2" rows="6">${E(s.prompt)}</textarea><label>SearXNG (необязательно, иначе DuckDuckGo)</label><input id="o3" value="${E(s.searx)}" placeholder="https://searx.example.com"><label><input type="checkbox" id="o4" style="width:auto" ${s.search=='1'?'checked':''}> Веб-поиск для модели</label><br><label><input type="checkbox" id="o5" style="width:auto" ${s.signup=='1'?'checked':''}> Открытая регистрация</label><br><button class="bt" id="os">Сохранить</button>`;
+ if(t==='users')c.innerHTML=AD.users.map(u=>`<div class="row"><span>${E(u.name)}</span><small>${u.role}</small></div>`).join('');
+ if(t==='upd')c.innerHTML=`<p>Версия: <b>${AD.version}</b></p><p class="hint">Загрузи файл обновления <b>.oleg</b> (собирается командой <code>npm run build-update</code>). Перед установкой делается резервная копия, сервер перезапустится сам.</p><input id="uf" type="file" accept=".oleg"><button class="bt" id="ub">Установить обновление</button><div class="hint" id="um"></div>`}
+$('ac').onclick=async e=>{const d=e.target.dataset,id=e.target.id;try{
+ if(d.sel){await sv({model:d.sel});tab('models')}
+ if(d.del&&confirm('Удалить модель '+d.del+'?')){await J('admin/delmodel',{name:d.del});tab('models')}
+ if(d.r)$('mn').value=d.r;
+ if(id==='pl'){const n=$('mn').value.trim();if(!n)return;const r=await api('admin/pull',{name:n}),rd=r.body.getReader(),dc=new TextDecoder();let b='';
+  for(;;){const {done,value}=await rd.read();if(done)break;b+=dc.decode(value,{stream:true});const L=b.split('\n');b=L.pop();for(const l of L){if(!l)continue;const o=JSON.parse(l);$('pg').textContent=o.error?'Ошибка: '+o.error:o.status+(o.total?' '+Math.round(o.completed/o.total*100)+'%':'')}}
+  tab('models')}
+ if(id==='vs'||id==='vt'||id==='vd'){const v=$('vs').value;if(id==='vd'&&v&&confirm('Удалить голос?')){await J('admin/voicedel',{name:v});return tab('voice')}await sv({voice:v});if(id==='vt')say('Здорово, хозяин! Чего стряслось-то?')}
+ if(id==='vu'){const n=$('vn').value.trim(),fs=[...$('vf').files];if(!n||!fs.length)return;for(const f of fs){const ext=f.name.endsWith('.json')?'json':'onnx';$('vm').textContent='Загрузка '+f.name+'…';await api(`admin/voice?name=${encodeURIComponent(n)}&ext=${ext}`,f,true)}await sv({voice:n});$('vm').textContent='Готово — голос включён';}
+ if(id==='os'){await sv({ollama:$('o1').value.trim(),prompt:$('o2').value,searx:$('o3').value.trim(),search:$('o4').checked?1:0,signup:$('o5').checked?1:0});alert('Сохранено')}
+ if(id==='ub'){const f=$('uf').files[0];if(!f)return;if(!confirm('Установить обновление '+f.name+'?'))return;$('um').textContent='Загрузка…';const r=await J('admin/update'+'',undefined).catch(()=>0);
+  const rr=await api('admin/update',f,true);const o=await rr.json();$('um').textContent='Установлено v'+o.version+'. Перезапуск…';setTimeout(()=>location.reload(),4000)}
+}catch(x){(document.querySelector('#pg,#vm,#um')||{}).textContent=x.message;if(!document.querySelector('#pg,#vm,#um'))alert(x.message)}};
+boot();
+</script></body></html>
