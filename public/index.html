@@ -1,0 +1,62 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#2a0f3a"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" href="/avatar.png"><title>Oleg AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--pk:#ff5fa8;--cy:#35e6d4;--gr:#5dff7e;--gd:#f0b44a;--op:.8;--fs:1;--aw:25%;--bg:rgba(24,8,34,var(--op))}
+*{box-sizing:border-box}html,body{height:100%;margin:0}html{overflow-x:hidden}
+body{font:500 calc(clamp(17px,1.95vw,28px)*var(--fs))/1.2 Oswald,"Arial Narrow",Impact,sans-serif;color:#fff;height:100dvh;display:flex;flex-direction:column;overflow:hidden;background:#7a2f8e;padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)}
+#bg{position:fixed;inset:0;z-index:-1}
+header{order:0;display:flex;align-items:center;gap:clamp(10px,2vw,28px);padding:clamp(8px,1.6vw,22px) clamp(12px,3vw,48px) 0}
+#av{width:clamp(52px,9vw,128px);aspect-ratio:1;border-radius:50%;object-fit:cover;border:4px solid #ff8a5c;box-shadow:0 0 0 3px #7a2c8c,0 0 22px var(--pk);background:#4a2380;flex:none}
+h1{margin:0;font:400 clamp(30px,6.4vw,92px)/1 Anton,Impact,sans-serif;letter-spacing:.03em;white-space:nowrap;background:linear-gradient(180deg,#ff7ad9,#ffa65a 55%,#ff5fa8);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:clamp(2px,.35vw,5px) #3a1458;paint-order:stroke fill;filter:drop-shadow(0 4px 0 #2a0f3e) drop-shadow(0 0 14px #b04dff99)}
+.tag{font:600 clamp(11px,2.2vw,30px)/1 Oswald,sans-serif;color:var(--gd);text-shadow:0 2px 0 #3a1458;margin-top:4px;white-space:nowrap}
+.sp{flex:1}.hbs,#barl,#barr,#hb{display:flex;gap:8px;align-items:center}
+.ib{width:clamp(38px,3.4vw,48px);aspect-ratio:1;border-radius:50%;border:2px solid var(--cy);background:var(--bg);color:#fff;font-size:18px;cursor:pointer;flex:none}.ib.off{opacity:.4;text-decoration:line-through}
+.xoff{display:none!important}.box input[type=range]{padding:0;border:0;accent-color:#ff5fae}
+main{order:1;flex:1;min-height:0;display:flex;gap:clamp(10px,2vw,28px);padding:clamp(8px,1.4vw,20px) clamp(12px,3vw,48px)}
+.panel{position:relative;background:var(--bg);border:2px solid var(--cy);border-radius:20px;box-shadow:0 0 18px #35e6d44d}
+.panel:before,.panel:after{content:"";position:absolute;width:34px;height:34px;pointer-events:none}
+.panel:before{top:-4px;right:-4px;border:4px solid var(--cy);border-width:4px 4px 0 0;border-radius:0 20px 0 0}
+.panel:after{bottom:-4px;left:-4px;border:4px solid var(--pk);border-width:0 0 4px 4px;border-radius:0 0 0 20px}
+#chat{flex:1;min-width:0;border-color:#d54fb8}#log{height:100%;overflow:auto;padding:clamp(12px,1.6vw,24px) clamp(40px,3.4vw,52px) clamp(12px,1.6vw,24px) clamp(14px,2vw,30px);display:flex;flex-direction:column;gap:clamp(10px,1.6vw,22px);-webkit-overflow-scrolling:touch}
+#x{position:absolute;top:6px;right:14px;z-index:2;background:none;border:0;color:var(--pk);font-size:30px;cursor:pointer;line-height:1}
+.m{display:flex;gap:clamp(10px,1.4vw,18px);align-items:flex-start}.m>i,.m>img{width:1.95em;height:1.95em;border-radius:50%;flex:none}.m>img{border:2px solid var(--pk);object-fit:cover}
+.m>div{min-width:0;overflow-wrap:anywhere;white-space:pre-wrap;padding-right:1em}.m b{color:var(--pk);font-weight:600;text-transform:uppercase}.m.u b{color:#4aa8ff}.m.st>div{opacity:.75}.m.er>div{color:#ff9a9a}
+.m code{background:#0006;padding:1px 5px;border-radius:5px;font-family:ui-monospace,Menlo,monospace;font-size:.8em}.m pre{background:#0009;padding:10px;border-radius:10px;overflow:auto;margin:6px 0;white-space:pre;font:.75em ui-monospace,Menlo,monospace}
+.sy{background:none;border:0;cursor:pointer;font-size:.8em;opacity:.5;padding:0 3px;color:#fff}.sy.on{opacity:1;filter:drop-shadow(0 0 4px var(--gr))}
+aside{width:max(230px,var(--aw));max-width:50%;align-self:flex-start;padding:clamp(12px,1.4vw,20px) clamp(14px,1.8vw,26px)}aside h2{margin:0 0 .4em;font:500 1.3em Oswald,sans-serif;padding-bottom:.3em;border-bottom:2px solid;border-image:linear-gradient(90deg,var(--pk),var(--cy) 60%,transparent) 1}
+aside p{margin:.45em 0;display:flex;align-items:center;gap:.4em;font-size:.82em;text-transform:uppercase;color:#e8e0f0}aside i{font-style:normal}aside p span{color:var(--gr);font-weight:600}aside p span.off{color:#ff8a8a}
+.dot{margin-left:auto;width:.55em;height:.55em;border-radius:50%;background:var(--gr);box-shadow:0 0 10px var(--gr)}aside p:first-of-type .dot{background:var(--cy);box-shadow:0 0 10px var(--cy)}
+form#f{order:3;display:flex;gap:clamp(8px,1vw,14px);align-items:center;padding:12px clamp(12px,3vw,48px) calc(12px + env(safe-area-inset-bottom));background:linear-gradient(#150a24ee,#0d0618f5);border-top:4px solid var(--cy);box-shadow:0 -6px 20px #35e6d433}
+.sq{width:clamp(44px,4.4vw,58px);aspect-ratio:1;border-radius:14px;border:2px solid #7a5cff;background:#2a1550;cursor:pointer;display:grid;place-items:center;flex:none}.sq.on{background:#7a1c4a;border-color:var(--pk)}
+#in{flex:1;min-width:0;background:#0f0720f0;border:2px solid var(--cy);border-radius:14px;color:#fff;font:inherit;font-size:max(16px,.9em);padding:clamp(9px,1vw,14px) 16px;resize:none;max-height:140px;box-shadow:inset 0 0 12px #35e6d422}
+#go{display:flex;align-items:center;gap:10px;border:2px solid #ffb3f0;border-radius:40px;padding:0 clamp(14px,2.2vw,32px);height:clamp(44px,4.4vw,58px);font:400 clamp(16px,1.9vw,27px) Anton,Impact,sans-serif;color:#fff;cursor:pointer;background:linear-gradient(90deg,#9a3cf0,#ff5fae);box-shadow:0 0 16px #ff5fae88;flex:none}
+#fc{order:2;display:none;font-size:.7em;color:var(--gd);padding:0 clamp(12px,3vw,48px) 4px;background:#0d0618f5}#fc.on{display:block}#fc u{cursor:pointer;color:var(--pk);margin-left:8px}
+/* расположение (настраивается в админ-панели) */
+body[data-ly=sc] aside{order:-1}body[data-ly=c] aside{display:none}
+body[data-bp=top] form#f{order:1;border-top:0;border-bottom:4px solid var(--cy);box-shadow:0 6px 20px #35e6d433;padding-bottom:12px}body[data-bp=top] #fc{order:1}body[data-bp=top] main{order:3}
+@media(min-width:801px){body[data-ly=st] main,body[data-ly=sb] main{flex-direction:column}body[data-ly=st] aside{order:-1}body[data-ly=st] aside,body[data-ly=sb] aside{width:100%;max-width:none;align-self:stretch;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 16px;padding:8px 18px}body[data-ly=st] aside h2,body[data-ly=sb] aside h2{display:none}}
+body.lite h1{filter:none}body.lite .panel,body.lite .ib,body.lite #go{box-shadow:none}
+.ov{position:fixed;inset:0;background:#0a0014b3;display:none;align-items:center;justify-content:center;padding:14px;z-index:9;font-size:17px}.ov.on{display:flex}
+.box{width:100%;max-width:580px;max-height:92dvh;overflow:auto;padding:20px}.box h3{margin:0 0 10px;font:500 1.5em Oswald;color:var(--gd)}
+input,select,textarea,button{font:inherit}.box input:not([type=checkbox]):not([type=color]),.box select,.box textarea{width:100%;background:#150a22;border:2px solid #35e6d466;border-radius:10px;color:#fff;padding:9px 12px;margin:4px 0 8px;font-size:16px}.box input[type=color]{width:60px;height:36px;border:0;background:none}
+.bt{display:inline-block;background:linear-gradient(90deg,#9a3cf0,#ff5fae);border:0;color:#fff;border-radius:10px;padding:9px 16px;cursor:pointer;margin:2px 4px 2px 0;text-decoration:none}.bt.g{background:#ffffff22;border:1px solid #fff4}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #fff2;flex-wrap:wrap}
+.chip{display:inline-block;background:#ffffff1f;border-radius:20px;padding:3px 11px;margin:3px 3px 0 0;cursor:pointer}small,.hint{color:#cbb;font-size:.85em;display:block}.err{color:#ff9a9a;min-height:1.2em}.ck{display:block;margin:6px 0}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gd);outline-offset:2px}
+@media(max-width:800px){main{flex-direction:column;padding:6px 10px}aside{width:100%;max-width:none;align-self:stretch;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 16px;padding:8px 14px}aside h2{display:none}aside p{min-width:0;font-size:12px;margin:3px 0;white-space:nowrap}aside p:last-of-type{grid-column:1/-1}aside .dot{width:.5em;height:.5em;margin-left:auto}.tag{display:none}header{padding:8px 10px 0}form#f{padding:8px 10px calc(8px + env(safe-area-inset-bottom))}#go span{display:none}#go{padding:0 16px}#x{font-size:26px}body[data-ly=st] aside,body[data-ly=sc] aside{order:-1}}
+@media(max-width:400px){header{gap:6px}.ib{width:30px;font-size:14px}h1{font-size:23px}#av{width:42px}}
+@media(prefers-reduced-motion:no-preference){.m.st>div{animation:p 1.3s infinite}@keyframes p{50%{opacity:.35}}}
+</style><style id="ucss"></style></head><body>
+<div id="bg"></div>
+<header><div class="hbs" id="hbl"></div><img id="av" src="/avatar.png" alt="Олег" onerror="this.style.display='none'"><div><h1 data-t="title">OLEG AI V2.2</h1><div class="tag" data-t="tagline">АНАЛИЗ. ПЛАНИРОВАНИЕ. РЕШЕНИЕ.</div></div><div class="sp"></div>
+<div class="hbs" id="hbr"><div id="hb"><button class="ib" id="bgb" data-tt="ttMusic" hidden>♪</button><button class="ib" id="bv" data-tt="ttVoice">🔇</button><button class="ib" id="bm" data-tt="ttMenu">☰</button><button class="ib" id="ba" data-tt="ttAdmin" hidden>⚙</button></div></div></header>
+<main><section class="panel" id="chat"><button id="x" data-tt="ttNew">×</button><div id="log" aria-live="polite"></div></section>
+<aside class="panel"><h2 data-t="statusTitle">Системный статус</h2><p><i data-t="stMode">Режим:</i><span id="s1">—</span><u class="dot"></u></p><p><i data-t="stKb">База знаний:</i><span id="s2">—</span><u class="dot"></u></p><p><i data-t="stSrv">Серверы:</i><span id="s3">—</span><u class="dot"></u></p><p><i data-t="stTea">Уровень чая:</i><span id="s4">—</span><u class="dot"></u></p><p><i data-t="stNet">Нейросеть:</i><span id="s5">—</span><u class="dot"></u></p></aside></main>
+<div id="fc"></div>
+<form id="f"><div id="barl"></div><button type="button" class="sq" id="mic" data-tt="ttMic"><svg viewBox="0 0 24 24" width="26" fill="#fff"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11z"/></svg></button>
+<button type="button" class="sq" id="clip" data-tt="ttClip"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 11l-9 9a5 5 0 0 1-7-7l9-9a3.5 3.5 0 0 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg></button><input type="file" id="fi" hidden>
+<textarea id="in" rows="1" data-tp="placeholder" placeholder="Напиши задачу…" enterkeyhint="send"></textarea><button id="go"><svg viewBox="0 0 24 24" width="26" fill="#fff"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg><span data-t="send">ОТПРАВИТЬ</span></button><div id="barr"></div></form>
+<div class="ov on" id="auth"><div class="box panel"><h3 data-t="authTitle">Олег AI — вход</h3><input id="an" data-tp="loginPh" placeholder="Логин" autocomplete="username" autocapitalize="none"><input id="ap" type="password" data-tp="passPh" placeholder="Пароль (от 8 символов)" autocomplete="current-password"><div class="err" id="ae"></div><button class="bt" id="li" data-t="btnLogin">Войти</button><button class="bt g" id="re" data-t="btnReg">Регистрация</button><small data-t="authHint">Первый зарегистрированный пользователь становится администратором.</small></div></div>
+<div class="ov" id="menu"><div class="box panel"><h3 data-t="menuTitle">Чаты</h3><button class="bt" id="nc" data-t="newChat">+ Новый чат</button><button class="bt g" id="lo" data-t="logout">Выйти</button><div id="cl"></div><button class="bt g" id="mc" data-t="close">Закрыть</button></div></div>
+<div class="ov" id="adm"><div class="box panel"><h3>Админ-панель</h3><div class="tabs" id="tb"></div><div id="ac"></div><button class="bt g" id="ax">Закрыть</button></div></div>
+<script src="/app.js"></script></body></html>
